@@ -4,6 +4,23 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tugas 3</title>
+    <script>
+        function validateForm() {
+            var nama = document.getElementById('nama').value.trim();
+            var alamat = document.getElementById('alamat').value.trim();
+            var tempat_lahir = document.getElementById('tempat_lahir').value.trim();
+            var tanggal_lahir = document.getElementById('tanggal_lahir').value.trim();
+            var jenis_kelamin_laki = document.getElementById('laki_laki').checked;
+            var jenis_kelamin_perempuan = document.getElementById('perempuan').checked;
+            var pendidikan = document.getElementById('pendidikan').value;
+
+            if (nama === "" || alamat === "" || tempat_lahir === "" || tanggal_lahir === "" || (!jenis_kelamin_laki && !jenis_kelamin_perempuan) || pendidikan === "") {
+                alert("Semua field harus diisi!");
+                return false;
+            }
+            return true;
+        }
+    </script>
 </head>
 <body>
     <h1>
@@ -12,7 +29,7 @@
     <h3>
         Silahkan isi data diri Anda di bawah ini
     </h3>
-    <form action="proses.php" method="post">
+    <form action="proses.php" method="post" onsubmit="return validateForm()">
         <div style="display: flex; flex-direction: row; width: 400px; justify-content: space-between; margin-bottom: 10px;">
             <label for="nama">Nama</label>
             <input type="text" id="nama" name="nama">
